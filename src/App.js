@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Form from "../src/components/Form"
+import Email from './components/Email'
+import Name from './components/Name'
+import Selection from './components/Selection'
+
 function App() {
+
   const user={
     "name": "???",
     "email": "???",
@@ -9,25 +13,34 @@ function App() {
     "occupation": "???",
     "state": "???"
 }
-const [career, setCareer]= useState([])
 
-    useEffect(()=>{
-          const url = "https://frontend-take-home.fetchrewards.com/form";
-              fetch(url)
-                 .then(res =>{
-                      if(!res.ok){
-                      throw Error("Error")
-                    }
-                  return res.json();
-                })
-          .then(data =>{
-            console.log(data)
-        })
-    }, [career, setCareer])
+const [data, setData] = useState({})
+ 
+useEffect(()=>{
+  const url = "https://frontend-take-home.fetchrewards.com/form";
+  fetch(url)
+    .then(res =>{
+          if(!res.ok){
+          throw Error("Error")
+        }
+        return res.json()
+    })
+.then(api =>{
+setData(api)
+
+})
+
+    }, [setData])
+
+  
 
   return (
     <div className="App">
-  <Form user={user} careers ={career} setCareer={setCareer}/>
+  <form>
+        <Name/>
+            <Email/>
+            <Selection data={data} user={user}/>
+  </form>
       
     </div>
   );
