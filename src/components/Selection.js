@@ -1,13 +1,13 @@
 import React from 'react'
 
-function Selection({data, user}) {
+function Selection({data, occupations, state}) {
 console.log(data) // returns empty object
   return (
     <div>
     {/* career selection */}
     <label htmlFor="occupation">Select Occupation:
     {data.occupations ?
-    <select>
+    <select value={occupations.occupation}>
         {data.occupations.map(( occupation)=>{
             
                 return(
@@ -25,7 +25,7 @@ console.log(data) // returns empty object
     {/* state selection */}
     <label htmlFor="state">Select State:</label>
     {data.occupations ?
-    <select>
+    <select value={state.state}>
         {data.states.map(( state)=>{
             
                 return(
