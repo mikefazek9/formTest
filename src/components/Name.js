@@ -1,14 +1,15 @@
 import { useState } from "react"
 import React from 'react'
 
-function Name({name}) {
+function Name({name, setName}) {
   const [message, setMessage]=useState("")
 
-  const ValidateName = (e)=>{
-    let userName = e.target.value;
+  const validateName = (e)=>{
+    const userName = e.target.value;
 
     if(userName !== ""){
       setMessage("success")
+      setName(userName)
     }else{
       setMessage("Please Enter name...")
     }
@@ -20,10 +21,11 @@ function Name({name}) {
         Name
         <input
         required
+        className="mb-2"
          type="text"
-         value={name.name}
+         value={name}
              placeholder="Your Name"
-         onChange={ValidateName}/>
+         onChange={validateName}/>
     </label>
     <span>{message}</span>
     </div>
