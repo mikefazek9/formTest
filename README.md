@@ -1,5 +1,5 @@
 # FETCH FORM
-
+[Link to site](https://luxury-granita-7a865f.netlify.app/)
 ## Overview
 
 In this project I created, a simple form application using React.JS, Validator from NPM and TailwindCSS for styling.
